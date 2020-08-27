@@ -1,14 +1,14 @@
 {
-  "name": "URLShortener",
+  "name": "nst-sh",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/Nsttt/URLShortener.git",
+  "repository": "https://github.com/Nsttt/nst-sh.git",
   "author": "Nestor <elnestinatorHD@gmail.com>",
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
