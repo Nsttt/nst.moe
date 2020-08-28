@@ -8,19 +8,20 @@
 </head>
 <body>
     <header>
-    <h1>nst-sh - Url Shortener</h1>
+        <img class="logo" src="https://i.imgur.com/aYWkEVW.png">
     </header>
     <main id="app">
-        <form @submit.prevent="createUrl()">
-            <label for="url">Url</label>
-            <input v-model='url' name="url" id="url">
-            <label for="alias">Alias</label>
-            <input v-model='alias' name="alias" id="alias">
-            <button type="submit">Create</button>
+        <form class="form" v-if="formVisible"  @submit.prevent="createUrl()">
+            <div v-if="error" class="error">
+                {{error}}
+            </div>
+            <input class="input" type="text" v-model="url" name="url" id="url" placeholder="Enter a url">
+            <input class="input" type="text" v-model="alias" name="alias" id="alias" placeholder="Enter a alias">
+            <button type="submit" class="create">Create</button>
         </form>
-        <pre v-if='created'>
-            {{JSON.strigify(created, null, 2)}}
-        </pre>
+        <div v-if='created'>
+            <p class="created">You url is: <a :href="created">{{created}}</a></p>
+        </div>
     </main>
     <script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
     <script src="app.js"></script>

@@ -1,10 +1,12 @@
 const express = require('express')
-const cors = require('cors')
+const path = require('path')
 const morgan = require('morgan')
 const helmet = require('helmet')
 const yup = require('yup')
 const monk = require('monk')
 const nanoid = require('nanoid')
+const rateLimit = require('express-rate-limit')
+const slowDown = require('express-slow-down')
 
 require('dotenv').config();
 
@@ -13,43 +15,47 @@ const urls = db.get('urls')
 urls.createIndex({alias: 1 }, { unique: true })
 
 const app = express()
+app.enable('trust proxy');
 
 app.use(helmet())
-app.use(morgan('tiny'))
-app.use(cors())
+app.use(morgan('common'))
 app.use(express.json())
 app.use(express.static('./public'))
 
+const notFoundPath = path.join(__dirname, 'public/404.html');
 
-app.get('/', (req, res) => {
-
-})
-
-app.get('/:id', async (req, res) => {
-    const { id } = req.params;
+app.get('/:id', async (req, res, next) => {
+    const { id: alias } = req.params;
     try {
         const url = await urls.findOne({ alias })
         if (url) {
             res.redirect(url.url)
         }
-        res.redirect(`/?error=${alias} not found`)
+        return res.status(404).sendFile(notFoundPath)
     } catch (error) {
-        res.redirect(`/?error=Link not found`)
+        return res.status(404).sendFile(notFoundPath)
     }
 })
 
 const schema = yup.object().shape({
-    alias: yup.string().trim().matches(/[\w\-]/i),
+    alias: yup.string().trim().matches(/^[\w\-]+$/i),
     url: yup.string().trim().url().required(),
 })
 
-app.post('/url', async (req, res, next) => {
+app.post('/url', slowDown({
+    windowMs: 30 * 1000,
+    delayAfter: 1,
+    delayMs: 500,
+}), async (req, res, next) => {
     let { alias, url } = req.body;
     try {
         await schema.validate({
             alias,
             url,
         })
+        if (url.includes('nst.sh')) {
+            throw new Error('STOP! YOU VIOLATED THE LAW! PAY THE COURT A FINE OR SERVE YOUR SENTENCE, YOUR STOLEN GOODS ARE NOW FORFEIT.﻿');
+          }
         if (!alias) {
             alias = nanoid(5);
         } else {
@@ -70,7 +76,11 @@ app.post('/url', async (req, res, next) => {
     }
 })
 
-app.use((error, req, res, next) => {
+app.use((req, res, next) => {
+    res.status(404).sendFile(notFoundPath);
+  });
+
+app.use((req, res, error, next) => {
     if (error.status) {
         res.status(error.status)
     } else {

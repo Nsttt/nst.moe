@@ -3,11 +3,13 @@ const app = new Vue({
     data: {
         url: '',
         alias: '',
+        error: '',
+        formVisible: true,
         created: null,
     },
     methods: {
         async createUrl() {
-            console.log(this.url, this.alias)
+            this.error = '';
             const response = await fetch('/url', {
                 method: 'POST',
                 headers: {
@@ -15,10 +17,19 @@ const app = new Vue({
                 },
                 body: JSON.stringify({
                     url: this.url,
-                    alias: this.alias
+                    alias: this.alias || undefined,
                 })
             })
-            this.created = await response.json()
+            if (response.ok) {
+                const result = await response.json();
+                this.formVisible = false;
+                this.created = `https://nst.sh/${result.alias}`;
+              } else if (response.status === 429) {
+                this.error = 'Too mamy requests, try again in 30 seconds.';
+              } else {
+                const result = await response.json();
+                this.error = result.message;
+              }
         }
     }
 })
