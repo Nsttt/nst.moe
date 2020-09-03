@@ -20,7 +20,7 @@ app.enable('trust proxy');
 app.use(helmet())
 app.use(helmet.contentSecurityPolicy({
     directives: {
-        defaultSrc: ["'self'","'unsafe-eval'", "'inline'", "'eval'", "https://unpkg.com/"],
+        defaultSrc: ["'self'", "'unsafe-eval'", "'unsafe-inline'", "https://unpkg.com/"],
         imgSrc: ["'self'", "https://i.imgur.com/"]
     }
 }))

@@ -14,7 +14,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #35AB88;
+    background-color: #BAC2E4;
   }
 
   header {
@@ -56,12 +56,12 @@ body {
     text-align: center;
     font-size: 1.25rem;
     transition: border-bottom-color 0.3s ease-in-out;
-    caret-color: #56BC58;
+    caret-color: #1135ff;
   }
   
   .input:focus {
     outline: none;
-    border-bottom-color: #56BC58;
+    border-bottom-color: #1135ff;
   }
   
   .input::placeholder {
