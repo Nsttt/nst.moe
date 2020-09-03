@@ -25,7 +25,6 @@ body {
   
   .logo {
     max-width: 90%;
-    /* image-rendering: -moz-crisp-edges; */
   }
   
   .error {

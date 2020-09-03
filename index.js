@@ -18,6 +18,12 @@ const app = express()
 app.enable('trust proxy');
 
 app.use(helmet())
+app.use(helmet.contentSecurityPolicy({
+    directives: {
+        defaultSrc: ["'self'"],
+        imgSrc: ["'self'"]
+    }
+}))
 app.use(morgan('common'))
 app.use(express.json())
 app.use(express.static('./public'))
@@ -54,7 +60,7 @@ app.post('/url', slowDown({
             url,
         })
         if (url.includes('nst.sh')) {
-            throw new Error('STOP! YOU VIOLATED THE LAW! PAY THE COURT A FINE OR SERVE YOUR SENTENCE, YOUR STOLEN GOODS ARE NOW FORFEIT.﻿');
+            throw new Error('STOP! YOU VIOLATED THE LAW! PAY THE COURT A FINE OR SERVE YOUR SENTENCE, YOUR STOLEN GOODS ARE NOW FORFEIT.');
           }
         if (!alias) {
             alias = nanoid(5);
