@@ -14,7 +14,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #BAC2E4;
+    background-color: #000000;
   }
 
   header {
@@ -56,12 +56,12 @@ body {
     text-align: center;
     font-size: 1.25rem;
     transition: border-bottom-color 0.3s ease-in-out;
-    caret-color: #1135ff;
+    caret-color: #FCA311;
   }
   
   .input:focus {
     outline: none;
-    border-bottom-color: #1135ff;
+    border-bottom-color: #FCA311;
   }
   
   .input::placeholder {
@@ -75,9 +75,9 @@ body {
     font-size: 1.15rem;
     color: #262626;
     border: none;
-    background-color: #FF8A45;
+    background-color: #E5E5E5;
     padding: 0.75em 1.25rem;
-    box-shadow: 3px 3px 0 0 #ffffff;
+    box-shadow: 3px 3px 0 0 #14213D;
     transition: box-shadow 0.2s ease-in-out;
   }
   
