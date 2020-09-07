@@ -7,9 +7,9 @@
     <title>nst.sh</title>
 </head>
 <body>
-    <header>
-        <img class="logo" src="https://i.imgur.com/wUbh3QI.png">
-    </header>
+    <div>
+        <img id="img" class="logo" srcset="">
+    </div>
     <main id="app">
         <form class="form" v-if="formVisible"  @submit.prevent="createUrl()">
             <div v-if="error" class="error">
@@ -19,6 +19,7 @@
             <input class="input" type="text" v-model="alias" name="alias" id="alias" placeholder="Enter a alias">
             <button type="submit" class="create">Create</button>
         </form>
+        <button id="source" type="button" class="source">Image Source</button>
         <div v-if='created'>
             <p class="created">You url is: <a :href="created">{{created}}</a></p>
         </div>
