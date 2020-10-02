@@ -23,6 +23,14 @@ div {
   overflow: hidden;
 }
 
+img {
+  display: flex;
+  max-width: 500px;
+  max-height: 550px;
+  width: auto;
+  height: auto;
+}
+
 .error {
   background: #a63446;
   padding: 0.5rem 1rem;
@@ -74,19 +82,6 @@ div {
   background-color: #fe534d;
   padding: 0.75em 1.25rem;
   box-shadow: 3px 3px 0 0 #a83733;
-  transition: box-shadow 0.2s ease-in-out;
-}
-
-.source {
-  cursor: pointer;
-  font-family: inherit;
-  text-align: center;
-  font-size: 1.15rem;
-  color: #262626;
-  border: none;
-  background-color: #bdfe4d;
-  padding: 0.75em 1.25rem;
-  box-shadow: 3px 3px 0 0 #8fc03b;
   transition: box-shadow 0.2s ease-in-out;
 }
 

@@ -1,30 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
     <title>nst.sh</title>
-</head>
-<body>
-    <div>
-        <img id="img" class="logo" srcset="">
-    </div>
+  </head>
+  <body>
     <main id="app">
-        <form class="form" v-if="formVisible"  @submit.prevent="createUrl()">
-            <div v-if="error" class="error">
-                {{error}}
-            </div>
-            <input class="input" type="text" v-model="url" name="url" id="url" placeholder="Enter a url">
-            <input class="input" type="text" v-model="alias" name="alias" id="alias" placeholder="Enter a alias">
-            <button type="submit" class="create">Create</button>
-        </form>
-        <button id="source" type="button" class="source">Image Source</button>
-        <div v-if='created'>
-            <p class="created">You url is: <a :href="created">{{created}}</a></p>
-        </div>
+      <div>
+        <a href="selectedUrl">
+          <img class="logo" v-if="selectedImg" :src="selectedImg" />
+        </a>
+      </div>
+      <form class="form" v-if="formVisible" @submit.prevent="createUrl()">
+        <div v-if="error" class="error">{{error}}</div>
+        <input
+          class="input"
+          type="text"
+          v-model="url"
+          name="url"
+          id="url"
+          placeholder="Enter a url"
+        />
+        <input
+          class="input"
+          type="text"
+          v-model="alias"
+          name="alias"
+          id="alias"
+          placeholder="Enter a alias"
+        />
+        <button type="submit" class="create">Create</button>
+      </form>
+      <div v-if="created">
+        <p class="created">You url is: <a :href="created">{{created}}</a></p>
+      </div>
     </main>
     <script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
     <script src="app.js"></script>
-</body>
+  </body>
 </html>
