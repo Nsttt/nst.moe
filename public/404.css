@@ -15,12 +15,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #262626;
+    background-color: #fec84e;
   }
   
   .not-found {
     margin: 1rem 0;
-    color: #ffffff;
+    color: #000000;
     font-size: 3rem;
     font-weight: normal;
   }
@@ -28,7 +28,7 @@
   .go-home-link {
     display: flex;
     align-items: center;
-    color: #ffffff;
+    color: #000000;
     font-size: 1.5rem;
   }
   
