@@ -93,9 +93,19 @@ img {
 }
 
 .created {
+  text-align: center;
+  padding-top: 30px;
+  font-size: 1.15rem;
   color: #000000;
 }
 
 .created a {
+  font-weight: bold;
   color: inherit;
+}
+
+.thanks {
+  text-align: center;
+  padding-top: 30px;
+  color: #000000;
 }

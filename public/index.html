@@ -21,7 +21,7 @@
           v-model="url"
           name="url"
           id="url"
-          placeholder="Enter a url"
+          placeholder="Enter an url"
         />
         <input
           class="input"
@@ -29,12 +29,13 @@
           v-model="alias"
           name="alias"
           id="alias"
-          placeholder="Enter a alias"
+          placeholder="Enter an alias"
         />
         <button type="submit" class="create">Create</button>
       </form>
       <div v-if="created">
-        <p class="created">You url is: <a :href="created">{{created}}</a></p>
+        <p class="created">Your url is: <a :href="created">{{created}}</a></p>
+        <p class="thanks">Thanks for using the app. :)</p>
       </div>
     </main>
     <script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
