@@ -1,9 +1,9 @@
 {
-  "name": "nst-sh",
+  "name": "nst.moe",
   "version": "1.0.0",
   "type": "module",
   "main": "index.js",
-  "repository": "https://github.com/Nsttt/nst-sh.git",
+  "repository": "https://github.com/Nsttt/nst-moe.git",
   "author": "Nestor <elnestinatorHD@gmail.com>",
   "license": "MIT",
   "private": true,

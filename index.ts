@@ -71,7 +71,7 @@ app.post(
         alias,
         url,
       });
-      if (url.includes("nst.sh")) {
+      if (url.includes("nst.moe")) {
         throw new Error(
           "STOP! YOU VIOLATED THE LAW! PAY THE COURT A FINE OR SERVE YOUR SENTENCE, YOUR STOLEN GOODS ARE NOW FORFEIT."
         );

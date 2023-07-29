@@ -97,7 +97,7 @@ createApp({
       if (response.ok) {
         const result = await response.json();
         this.formVisible = false;
-        this.created = `https://nst.sh/${result.alias}`;
+        this.created = `https://nst.moe/${result.alias}`;
       } else if (response.status === 429) {
         this.error = "Too many requests, try again in 30 seconds.";
       } else if (response.status === 500) {
