@@ -103,7 +103,6 @@ createApp({
       } else if (response.status === 500) {
         this.error = "Alias already in use.";
       } else {
-        const result = await response.json();
         this.error = result.message;
       }
     },
