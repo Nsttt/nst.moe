@@ -83,27 +83,40 @@ createApp({
     async createUrl() {
       this.error = "";
 
-      const response = await fetch("/url", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify({
-          url: this.url,
-          alias: this.alias || undefined,
-        }),
-      });
+      try {
+        const response = await fetch("/url", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            url: this.url,
+            alias: this.alias || undefined,
+          }),
+        });
 
-      if (response.ok) {
-        const result = await response.json();
-        this.formVisible = false;
-        this.created = `https://nst.moe/${result.alias}`;
-      } else if (response.status === 429) {
-        this.error = "Too many requests, try again in 30 seconds.";
-      } else if (response.status === 500) {
-        this.error = "Alias already in use.";
-      } else {
-        this.error = result.message;
+        if (response.status === 200) {
+          const result = await response.json();
+          this.formVisible = false;
+          this.created = `https://nst.moe/${result.alias}`;
+          return;
+        }
+
+        if (response.status === 429) {
+          this.error = "Too many requests, try again in 30 seconds.";
+          return;
+        }
+
+        if (response.status === 500) {
+          this.error = "Alias already in use.";
+          return;
+        }
+
+        const errorData = await response.json();
+        this.error = errorData.message;
+      } catch (error) {
+        this.error = "An error occurred while processing the request.";
+        console.error(error);
       }
     },
 
