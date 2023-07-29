@@ -1,5 +1,3 @@
-<a href="http://www.nstlopez.com/githunter/"><img src="https://i.imgur.com/aYWkEVW.png" title="nst.moe" alt="nst.moe" height="120" /></a>
-
 # nst.moe
 
 > A URL shortener built in node with MongoDB.
