@@ -111,7 +111,10 @@ createApp({
           this.error = "Alias already in use.";
           return;
         }
-
+        if (response.status === 405) {
+          console.error(response);
+          return;
+        }
         const errorData = await response.json();
         this.error = errorData.message;
       } catch (error) {
